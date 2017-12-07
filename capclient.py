@@ -12,9 +12,9 @@ HEAD = 1
 HEAD_SIZE = 4
 DATA = 2
 
-class CapClient(MyThread):
+class CapClient(ThreadedInOutQueue):
     def __init__(self, parent):
-        MyThread.__init__(self)
+        ThreadedInOutQueue.__init__(self)
         disp_max = max(parent.size)
         dev_max = max(parent.orig)
         args = "-P %ux%u@%ux%u/0 -S -Q 80" % (dev_max, dev_max, disp_max, disp_max)

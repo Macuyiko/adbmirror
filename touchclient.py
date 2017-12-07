@@ -5,9 +5,9 @@ from threadqueue import ThreadedInOutQueue
 from time import sleep
 from adb import ADBBIN
 
-class TouchClient(MyThread):
+class TouchClient(ThreadedInOutQueue):
     def __init__(self, parent):
-        MyThread.__init__(self)
+        ThreadedInOutQueue.__init__(self)
         cmd = [ADBBIN, "shell", " %s/minitouch" % (parent.path)]
         self.server = Popen(cmd)
         # Sensible defaults for my device, can be overridden later on
